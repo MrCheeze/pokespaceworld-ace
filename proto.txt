@@ -1,0 +1,309 @@
+lost all my notes, fuck
+
+enter battle with a pokemon with the name:
+
+4e 53 53 5c 5a 50
+4e 53 53 5d 5a 50 <- highest
+4e 53 54 54 5a 50
+4e 53 54 5b 5a 50
+4e 53 5e 4a 5a 50 <- better
+
+5C 5C 4E 8B 8B 5A
+
+newline, rival, 8 characters with diacritic
+
+all make current map script equal to 88
+
+
+
+
+need to copy name 7F 7F 7F 7F 7F 50 to D7E9-D7F0 (OT 5) or D819-D820 (nick 7)
+
+
+
+gameboy - 283
+snes - 627
+
+options:
+text: fast med slow
+animations: on off
+dunno
+dunno
+
+
+---- route
+
+set clock to noon
+take berry
+get 4th move
+catch girafarig with apple, name it 3 space (7F 7F 7F 50 50 50), take apple
+
+swaps:
+1/2
+7/2
+7/2
+5/2
+7/2
+5/1
+
+find metapod
+attack: 5a 53 5e 50 50 50
+switch: 50 53 5e 50 5a 50
+attack: 4a 53 5e 50 5a 50
+switch: 50 53 5e 4a 5a 50
+attack: 4e 53 5e 4a 5a 50
+
+
+-------------------
+
+ACE
+
+CC3A-CC5A: mail swap/read/write buffer
+
+
+
+on sunday CBD8 (gear day of week) will friday, the HALT instruction. thus the whole setup will crash LMAO
+
+
+--
+after looking at 00: code right after 20F4
+
+2F:5655	00C9	ShizukanaOka
+34:40A6	FF01	PlayerHouse1F - useless
+34:4195	5575	PlayerHouse2F
+34:468C	26AB	SilentHillPokecenter
+34:4843	D04F	SilentHillHouse - useless
+34:4BC6	2116	SilentHillLabFront
+34:5C73	FFCD	SilentHillLabBack - useless
+34:767E	060A	SilentHill
+36:7BA2	7C76	Route1P1
+36:7C72	4FC6	Route1P2
+
+D29A	01	PlayerHouse2F
+D29B	01	PlayerHouse1F
+D29C	06	SilentHill
+D29D	12	SilentHillLabFront
+D29E	06	SilentHillLabBack
+D29F	00	SilentHillPokecenter
+D2A0	02	SilentHillHouse
+D2A1	00	Route1P1
+D2A5	00	ShizukanaOka
+
+C026: 1B Route1P1
+C0D0: 21 Route1P1
+C17F: 28 Route1P1
+C27B: 03 Route1P1
+C38F: 10 Route1P1
+C5B6: 24 Route1P1
+C8B3: 0E Route1P1
+C930: 0B Route1P1
+C9B2: 26 Route1P1
+C9B3: 17 Route1P1
+CAA6: 11 Route1P1
+CABA: 2A Route1P1
+CD7B: 05 Route1P1
+CD7C: 0C Route1P1
+CD7C: 32 Route1P1
+CEB7: 18 Route1P1
+D07B: 02 Route1P1
+D5CD: 07 Route1P1
+DA7C: 37 Route1P1
+DBB3: 2C Route1P1
+DE3A: 2B Route1P1
+
+
+
+copy glitch move type to wStringBuffer1 - right after 36E3
+
+00 ????
+FC 58b6
+FD 58d5
+FE 590d
+FF 5945
+
+-------------------------------
+
+C0DF - 82 cry data
+C1B3 - 56 useless
+
+map data
+E3D9 - FF
+C4B9 - 0A
+C5B2 - 90
+C5D3 - 26
+
+redundant
+C8B6 - 46
+C99A - 4F
+C9B3 - 5C
+C9B7 - 08
+C9B7 - 75
+C9B8 - 0E
+C9B8 - 55
+C9B8 - A2
+C9CA - 80
+CADF - 49
+CBC5 - 42
+
+CCD6 - 65 useful? ??? CCE1, name!!!!! at CD11. crashes at the E4s above though.
+CCD6 - 65 ''
+D0B6 - 66 useless
+D9D2 - FF box pokemon (tricky because of terminator, but usable). impossible because of a crash in front though.
+DBB8 - 50 box pokemon names!!! impossible because of a jump in front though.
+DFB6 - 4C useless
+DFB6 - 4E useless
+DFB6 - 7D useless
+
+
+second byte of names
+grass: AC crash
+fire: 98 berserk gene
+water: A6 crash
+
+45: C1 BC B7 C9 C0 CF 50 7F pop ret
+54: E5 B2 C9 C1 C9 B5 CC C0 50 7F jp (hl)
+97: D8 E1 B3 C9 82 A8 89 50 7F pop ret
+
+optional: spinning battle entry sets CB60 to 02 <- bad don't do this. use trainer card to clear that whole area of ram to prevent inconsistencies.
+
+with expanded 77 bag, can edit ram directly up to D28E. just missed the map scripts.
+
+----------------------
+
+must have water or grass starter, not fire (because second byte of name 98 doesn't convert to an item that crashes when put into bag)
+
+catch girafarig
+name girafarig C1 9E
+take berry and apple to get 7 items
+
+jump off ledge to set CB74 to D0, step down then up to get 30 from sign to CB26 to skip the volatile overworld memory (must open start menu as soon as possible)
+
+swaps:
+3-1
+7-2 * 2
+7-1 * 4 and take mail
+8-2
+3-1
+
+
+look at trainer card to clean up CB5E-CB61
+look at twinz's moves to set CB5C to 02 (also it should already be last visible pokemon in party, to set CB5B to C1)
+take item (twinz will still have item) and you will have 0x77 items
+
+give mail to starter. all of mail is the payload. (don't do this before taking item)
+swap pokemon with mail with pokemon 0x67. conveniently this gets girafarig icon
+
+----------------------
+
+
+eb1a  dec  b AF:7700 BC:0012 DE:0014 HL:ea77 SP:dfd7
+eb1b  dec  b AF:7760 BC:ff12 DE:0014 HL:ea77 SP:dfd7
+eb1c  dec  b AF:7740 BC:fe12 DE:0014 HL:ea77 SP:dfd7
+eb1d  dec  b AF:7740 BC:fd12 DE:0014 HL:ea77 SP:dfd7
+eb1e  dec  b AF:7740 BC:fc12 DE:0014 HL:ea77 SP:dfd7
+eb1f  dec  b AF:7740 BC:fb12 DE:0014 HL:ea77 SP:dfd7
+eb20  dec  b AF:7740 BC:fa12 DE:0014 HL:ea77 SP:dfd7
+eb21  dec  b AF:7740 BC:f912 DE:0014 HL:ea77 SP:dfd7
+eb22  dec  b AF:7740 BC:f812 DE:0014 HL:ea77 SP:dfd7
+eb23  dec  b AF:7740 BC:f712 DE:0014 HL:ea77 SP:dfd7
+eb24  dec  b AF:7740 BC:f612 DE:0014 HL:ea77 SP:dfd7
+eb25  dec  b AF:7740 BC:f512 DE:0014 HL:ea77 SP:dfd7
+eb26  jr   nc,$eb59 AF:7740 BC:f412 DE:0014 HL:ea77 SP:dfd7
+eb59  nop           AF:7740 BC:f412 DE:0014 HL:ea77 SP:dfd7
+eb5a  nop           AF:7740 BC:f412 DE:0014 HL:ea77 SP:dfd7
+eb5b  pop  bc       AF:7740 BC:f412 DE:0014 HL:ea77 SP:dfd7
+eb5c  ld   (bc),a   AF:7740 BC:d19e DE:0014 HL:ea77 SP:dfd9
+eb5d  nop           AF:7740 BC:d19e DE:0014 HL:ea77 SP:dfd9
+eb5e  add  a,c      AF:7740 BC:d19e DE:0014 HL:ea77 SP:dfd9 SET A to unsafe value
+eb5f  ld   d,b      AF:1530 BC:d19e DE:0014 HL:ea77 SP:dfd9
+eb60  nop           AF:1530 BC:d19e DE:d114 HL:ea77 SP:dfd9
+eb61  nop           AF:1530 BC:d19e DE:d114 HL:ea77 SP:dfd9
+eb62  nop           AF:1530 BC:d19e DE:d114 HL:ea77 SP:dfd9
+eb63  call z,$8066  AF:1530 BC:d19e DE:d114 HL:ea77 SP:dfd9
+eb66  add  a,b      AF:1530 BC:d19e DE:d114 HL:ea77 SP:dfd9 CLEAR CARRY based on value of A
+eb67  nop           AF:e600 BC:d19e DE:d114 HL:ea77 SP:dfd9
+eb68  ldi  a,(hl)   AF:e600 BC:d19e DE:d114 HL:ea77 SP:dfd9
+eb69  ld   d,e      AF:0000 BC:d19e DE:d114 HL:ea78 SP:dfd9
+eb6a  nop           AF:0000 BC:d19e DE:1414 HL:ea78 SP:dfd9
+eb6b  sbc  a,b      AF:0000 BC:d19e DE:1414 HL:ea78 SP:dfd9 SET A based on carry
+eb6c  nop           AF:2f70 BC:d19e DE:1414 HL:ea78 SP:dfd9
+eb6d  cp   a,$60    AF:2f70 BC:d19e DE:1414 HL:ea78 SP:dfd9 
+eb6f  ld   bc,$0000 AF:2f50 BC:d19e DE:1414 HL:ea78 SP:dfd9
+eb72  rrc  a        AF:2f50 BC:0000 DE:1414 HL:ea78 SP:dfd9 SET CARRY (odd byte of A)
+eb73  ld   b,l      AF:9710 BC:0000 DE:1414 HL:ea78 SP:dfd9
+eb74  ret  nc       AF:9710 BC:7800 DE:1414 HL:ea78 SP:dfd9
+
+EB13:  00        NOP                 A:77 B:00 C:12 D:00 E:14 F:00 H:ea L:77 LY:41 SP:dfd7  Cy:2024632732
+EB14:  44        LD   B,H            A:77 B:00 C:12 D:00 E:14 F:00 H:ea L:77 LY:41 SP:dfd7  Cy:2024632736
+EB15:  44        LD   B,H            A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:77 LY:41 SP:dfd7  Cy:2024632740
+EB16:  44        LD   B,H            A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:77 LY:41 SP:dfd7  Cy:2024632744
+EB17:  44        LD   B,H            A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:77 LY:41 SP:dfd7  Cy:2024632748
+EB18:  44        LD   B,H            A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:77 LY:41 SP:dfd7  Cy:2024632752
+EB19:  44        LD   B,H            A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:77 LY:41 SP:dfd7  Cy:2024632756
+EB1A:  2E 2F     LD   L,#2Fh         A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:77 LY:41 SP:dfd7  Cy:2024632760
+EB1C:  08 09 26  LD   (#2609h),SP    A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd7  Cy:2024632768
+EB1F:  27        DAA                 A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd7  Cy:2024632788
+EB20:  30 31     JR   NC,EB53h       A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd7  Cy:2024632792
+EB53:  00        NOP                 A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd7  Cy:2024632804
+EB54:  00        NOP                 A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd7  Cy:2024632808
+EB55:  00        NOP                 A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd7  Cy:2024632812
+EB56:  00        NOP                 A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd7  Cy:2024632816
+EB57:  00        NOP                 A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd7  Cy:2024632820
+EB58:  00        NOP                 A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd7  Cy:2024632824
+EB59:  00        NOP                 A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd7  Cy:2024632828
+EB5A:  00        NOP                 A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd7  Cy:2024632832
+EB5B:  C1        POP  BC             A:77 B:ea C:12 D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd7  Cy:2024632836
+EB5C:  02        LD   (BC),A         A:77 B:d1 C:9e D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd9  Cy:2024632848
+EB5D:  00        NOP                 A:77 B:d1 C:9e D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd9  Cy:2024632856
+EB5E:  80        ADD  A,B            A:77 B:d1 C:9e D:00 E:14 F:00 H:ea L:2f LY:41 SP:dfd9  Cy:2024632860 SET A to safe value
+EB5F:  14        INC  D              A:48 B:d1 C:9e D:00 E:14 F:10 H:ea L:2f LY:41 SP:dfd9  Cy:2024632864
+EB60:  02        LD   (BC),A         A:48 B:d1 C:9e D:01 E:14 F:10 H:ea L:2f LY:41 SP:dfd9  Cy:2024632868
+EB61:  00        NOP                 A:48 B:d1 C:9e D:01 E:14 F:10 H:ea L:2f LY:41 SP:dfd9  Cy:2024632876
+EB62:  00        NOP                 A:48 B:d1 C:9e D:01 E:14 F:10 H:ea L:2f LY:41 SP:dfd9  Cy:2024632880
+EB63:  CC 66 80  CALL Z,#8066h       A:48 B:d1 C:9e D:01 E:14 F:10 H:ea L:2f LY:41 SP:dfd9  Cy:2024632884
+EB66:  80        ADD  A,B            A:48 B:d1 C:9e D:01 E:14 F:10 H:ea L:2f LY:41 SP:dfd9  Cy:2024632896 SET CARRY based on value of A
+EB67:  00        NOP                 A:19 B:d1 C:9e D:01 E:14 F:10 H:ea L:2f LY:41 SP:dfd9  Cy:2024632900
+EB68:  2A        LD   A,(HL+)        A:19 B:d1 C:9e D:01 E:14 F:10 H:ea L:2f LY:41 SP:dfd9  Cy:2024632904
+EB69:  53        LD   D,E            A:00 B:d1 C:9e D:01 E:14 F:10 H:ea L:30 LY:41 SP:dfd9  Cy:2024632912
+EB6A:  00        NOP                 A:00 B:d1 C:9e D:14 E:14 F:10 H:ea L:30 LY:41 SP:dfd9  Cy:2024632916
+EB6B:  98        SBC  A,B            A:00 B:d1 C:9e D:14 E:14 F:10 H:ea L:30 LY:41 SP:dfd9  Cy:2024632920 SET A based on carry
+EB6C:  00        NOP                 A:2e B:d1 C:9e D:14 E:14 F:50 H:ea L:30 LY:41 SP:dfd9  Cy:2024632924
+EB6D:  FE 60     CP   #60h           A:2e B:d1 C:9e D:14 E:14 F:50 H:ea L:30 LY:41 SP:dfd9  Cy:2024632928
+EB6F:  01 00 00  LD   BC,#0000h      A:2e B:d1 C:9e D:14 E:14 F:50 H:ea L:30 LY:41 SP:dfd9  Cy:2024632936
+EB72:  0F        RRCA                A:2e B:00 C:00 D:14 E:14 F:50 H:ea L:30 LY:41 SP:dfd9  Cy:2024632948 CLEAR CARRY (odd byte of a)
+EB73:  45        LD   B,L            A:17 B:00 C:00 D:14 E:14 F:00 H:ea L:30 LY:41 SP:dfd9  Cy:2024632952
+EB74:  D0        RET  NC             A:17 B:30 C:00 D:14 E:14 F:00 H:ea L:30 LY:41 SP:dfd9  Cy:2024632956
+322B:  D1        POP  DE             A:17 B:30 C:00 D:14 E:14 F:00 H:ea L:30 LY:41 SP:dfdb  Cy:2024632976
+
+
+
+9E 8D 2D, C1 A6 84
+ /  /  /  /  /  /  /  / 3+1 17
+ /  /  /  /  /  /  / 8+2 11
+ |  |  |  |  |  | 7+1 9
+ |  |  |  |  | 7+1 9
+ |  |  |  | 7+1 9
+ |  |  | 7+1 9
+ |  | 7+2 8
+ | 7+2 8
+3+1 3
+
+
+hall of fame music, starting from D0 00 / D0 2D / D0 50:
+DA 00 70 E5 77 DB 03 E1 0C 22 D8 0C B3 0F 0F 0F 0B D5 30 50 60 70 D8 0C 80 D4 1F 5F 7F D8 0C 60 6F FD 03 16 D0 0F 0F 0F 0F FD 00 16 D0 E1 08 25 DB 03 D8 0C C4 D5 81 31 81 A9 81 31 81 D4 13 D5 C3 A1 81 31 81 A9 61 11 61 B3 A3 61 FD 00 32 D0 D8 0C 12 D4 31 81 31 81 31 81 31 81 FD 0C 53 D0 33 83 33 83 53 83 53 83 73 A3 73 A3 53 83 53 83 FD 00 50 D0
+
+misha music (only 2 channels), starting from D0 00 / D0 65
+DA 01 0F E5 77 DB 02 D8 0C 93 07 D5 11 51 81 D4 11 51 51 51 51 D6 C1 D5 31 81 C1 D4 31 31 31 31 D6 B1 D5 31 81 B1 D4 31 31 31 31 D6 A1 D5 11 61 A1 D4 11 11 11 11 D6 91 D5 11 61 91 D4 11 11 11 11 D6 81 D5 11 51 81 D4 11 11 11 11 D6 71 A1 D5 31 71 A1 A1 A1 A1 D6 81 D5 11 31 81 81 81 31 D6 81 FD 00 0B D0 DB 02 D8 0C A3 D3 51 51 61 61 81 81 81 81 61 51 31 31 11 11 31 51 A1 81 81 81 81 81 81 81 61 51 31 31 11 11 11 11 11 11 11 11 61 61 61 61 41 31 11 11 D4 B1 B1 D3 11 31 51 61 61 61 31 31 31 31 31 51 71 71 81 D4 81 D3 31 81 81 81 51 61 FD 00 6F D0
+
+
+008762:  lda  $0f12,x   [010f12]   A:0001 X:0000 Y:0000 ; Load inputs
+008765:  and  #$0f                 A:0003 X:0000 Y:0000 ; Load directional inputs
+008767:  tay                       A:0003 X:0000 Y:0000 ; Move directional inputs to Y
+008768:  lda  $0f12,x   [010f12]   A:0003 X:0000 Y:0003 ; Load inputs
+00876b:  and  #$f0                 A:0003 X:0000 Y:0003 ; Load button inputs
+00876d:  ora  $e3ab,y   [01e3ae]   A:0000 X:0000 Y:0003 ; OR with directional input table that bans L+R and U+D
+008770:  sta  $0f12,x   [010f12]   A:0000 X:0000 Y:0003 ; Store inputs
+
+00 01 02 00 04 05 06 04 08 09 0A 08 00 01 02 00
+
+banned: 3X,7X,BX,CX,DX,EX,FX
