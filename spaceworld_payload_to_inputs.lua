@@ -42,8 +42,12 @@ f:read(0x10)
 
 
 local memory_areas = {}
-while f:read(1) do
-	local addr = f:read(1):byte()*0x100 + f:read(1):byte()
+while true do
+	bank = f:read(1)
+	if bank == nil then
+		break
+	end
+	local addr = bank:byte()*0x10000 + f:read(1):byte()*0x100 + f:read(1):byte()
 	f:read(2)
 	local block_len = f:read(1):byte()*0x100 + f:read(1):byte()
 	f:read(block_len)
@@ -69,28 +73,29 @@ for addr,block_len in pairs(memory_areas) do
 		f:seek("set", addr)
 		local data = f:read(block_len)
 		f:close()
-		for i=0,block_len-1 do
-			local val = data:byte(i+1)
-			
-			if val == 0 then
-				print("only advancing one frame instead of two")
-				emu.frameadvance() -- make up for double frames
-			elseif val == 0xE3 then
-				print("two frame nop")
-				emu.frameadvance()
-				emu.frameadvance()
-			else
+		if memory.readbyte(0x1FCD) ~= 3 then
+			print("started on wrong frame")
+		else
+			for i=0,block_len-1 do
+				local val = data:byte(i+1)
+				
 				inputs = {}
 				if bit.band(val,0x01) ~= 0 then inputs["P1 A"] = "True" end
 				if bit.band(val,0x04) ~= 0 then inputs["P1 Select"] = "True" end
 				if bit.band(val,0x10) ~= 0 then inputs["P1 Right"] = "True" end
 				if bit.band(val,0x40) ~= 0 then inputs["P1 Up"] = "True" end
 				
-				joypad.set(inputs)
-				emu.frameadvance()
-				
-				if memory.readbyte(0x19D9+i) ~= 0 then
-					--print("double frame A")
+				if memory.readbyte(0x1FCD) == 2 then
+					print("skipped frame A")
+				else
+					joypad.set(inputs)
+					emu.frameadvance()
+				end
+				if memory.readbyte(0x1FCD) == 1 then
+					print("skipped frame B")
+				else
+					joypad.set(inputs)
+					emu.frameadvance()
 				end
 				
 				inputs = {}
@@ -99,23 +104,29 @@ for addr,block_len in pairs(memory_areas) do
 				if bit.band(val,0x20) ~= 0 then inputs["P1 Left"] = "True" end
 				if bit.band(val,0x80) ~= 0 then inputs["P1 Down"] = "True" end
 				
-				joypad.set(inputs)
-				emu.frameadvance()
-				
-				--if memory.readbyte(0x19D9+i) ~= val then
-				--	print("skipped frame")
-				--end
-				if memory.readbyte(0x19D9+i+1) ~= 0 then
-					--print("double frame B")
+				if memory.readbyte(0x1FCD) == 2 then
+					print("skipped frame C")
+				else
+					joypad.set(inputs)
+					emu.frameadvance()
 				end
+				if memory.readbyte(0x1FCD) == 1 then
+					print("skipped frame D")
+				else
+					joypad.set(inputs)
+					emu.frameadvance()
+				end
+				
 			end
-			
-			--print(i, val, memory.readbyte(0x19D9+i))
+			joypad.set({["P1 Down"]="True"})
+			emu.frameadvance()
+			joypad.set({["P1 Down"]="True"})
+			emu.frameadvance()
+			joypad.set({["P1 Down"]="True"})
+			emu.frameadvance()
+			joypad.set({["P1 Down"]="True"})
+			emu.frameadvance()
 		end
-		joypad.set({["P1 Down"]="True"})
-		emu.frameadvance()
-		joypad.set({["P1 Down"]="True"})
-		emu.frameadvance()
 	end
 end
-print()
+print("done")

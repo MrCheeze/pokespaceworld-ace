@@ -195,6 +195,16 @@ swap pokemon with mail with pokemon 0x67. conveniently this gets girafarig icon
 
 ----------------------
 
+The end result of my efforts to break the Spaceworld demo wide open, despite the extremely limiting restrictions it places on what we can do. Unfortunately, this build is from two years before they programmed the credits into the game, so a credits warp is impossible... right? Follow along below for a play-by-play of events, or just watch the whole thing and read the explanation after:
+
+0:08 We start playing on the Pokemon Gold prototype, on the non-debug build. Of the four leaked builds, only this one contains a tiny difference: Wild Girafarig found holding an item will be holding an Apple instead of a Berry. That single difference is actually the only reason ACE or any major glitching is even possible within the demo area.
+0:34 RNG is manipulated so that we start with Kurusu, the water starter. We do this because later, the second character of its name, ル, will be interpreted as an item identifier, specifically that of an invalid item (A6).
+0:47 RNG manipulate a wild Girafarig holding an apple.
+
+I believe the exact setup shown in the video is the fastest ACE that is possible in this game, or at least very close to it. Any further ACE work would diverge only from the point of entering the bootstrap payload in the Mail. (Also, everything up to entering the mail bootstrap is easily possible in realtime.)
+
+----------------------
+
 
 eb1a  dec  b AF:7700 BC:0012 DE:0014 HL:ea77 SP:dfd7
 eb1b  dec  b AF:7760 BC:ff12 DE:0014 HL:ea77 SP:dfd7
@@ -307,3 +317,17 @@ DA 01 0F E5 77 DB 02 D8 0C 93 07 D5 11 51 81 D4 11 51 51 51 51 D6 C1 D5 31 81 C1
 00 01 02 00 04 05 06 04 08 09 0A 08 00 01 02 00
 
 banned: 3X,7X,BX,CX,DX,EX,FX
+
+draw sprite: CEF7
+
+0B 00 00 00 00 00 00 00 0B 00 00 00 00 00 00 00 0B 0B 00 00 00 00 00 00 40 30
+
+start battle:
+	ld a, $3C
+	ld [wce02], a
+	ld a, $02
+	ld [wce05], a
+	ld hl, wc5ed
+	set 7, [hl]
+	ld a, $08
+	ld [wd637], a

@@ -70,10 +70,12 @@ for addr,block_len in pairs(memory_areas) do
 		local val = data:byte(i+1)
 		
 		if 0xC000 <= addr and addr < 0xE000 then
-			mainmemory.writebyte(addr+i-0xC000, val)
+			memory.usememorydomain("SGB WRAM")
+			memory.writebyte(addr+i-0xC000, val)
 		end
 		if 0xE000 <= addr and addr < 0xFE00 then
-			mainmemory.writebyte(addr+i-0xE000, val)
+			memory.usememorydomain("SGB WRAM")
+			memory.writebyte(addr+i-0xE000, val)
 		end
 		if 0xA000 <= addr and addr < 0xC000 then
 			memory.usememorydomain(cartram)
