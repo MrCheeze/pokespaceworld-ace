@@ -1,0 +1,10 @@
+SystemID SNES
+0DDA	b	h	0	SGB WRAM	Enemy Item
+16CA	b	h	0	SGB WRAM	
+16CB	b	h	0	SGB WRAM	
+16CC	b	h	0	SGB WRAM	
+16CD	b	h	0	SGB WRAM	
+16CE	b	h	0	SGB WRAM	
+0A0B	b	h	0	SGB WRAM	Growl PP
+0DE1	b	h	0	SGB WRAM	Harden PP
+

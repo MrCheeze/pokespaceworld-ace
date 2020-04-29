@@ -1,0 +1,12 @@
+SystemID SNES
+000DD7	b	h	0	WRAM	Enemy PKMN
+000DDA	b	h	0	WRAM	Enemy Item
+000DDF	w	h	1	WRAM	Enemy DVs
+0000FF04	b	h	0	System Bus	rDIV
+0000FF44	b	h	0	System Bus	rLY
+0000FFEF	b	h	0	System Bus	Add
+0000FFF0	b	h	0	System Bus	Sub
+0000FFF1	b	h	0	System Bus	RTC
+0DD7	b	h	0	SGB WRAM	
+0DDA	b	h	0	SGB WRAM	
+

@@ -1,0 +1,17 @@
+SystemID SNES
+0B5B	b	h	0	SGB WRAM	
+0B5C	b	h	0	SGB WRAM	
+0D48	b	h	0	SGB WRAM	Selected Item
+0D49	b	h	0	SGB WRAM	Menu Scroll
+119E	b	h	0	SGB WRAM	Item Count
+119F	w	h	1	SGB WRAM	
+11A1	w	h	1	SGB WRAM	
+11A3	w	h	1	SGB WRAM	
+11A5	w	h	1	SGB WRAM	
+11A7	w	h	1	SGB WRAM	
+11A9	w	h	1	SGB WRAM	
+11AB	w	h	1	SGB WRAM	
+16B3	b	h	0	SGB WRAM	Party Item 1
+16E3	b	h	0	SGB WRAM	Party Item 2
+1711	b	h	0	SGB WRAM	
+

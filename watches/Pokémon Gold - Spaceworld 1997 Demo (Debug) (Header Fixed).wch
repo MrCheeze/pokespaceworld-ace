@@ -1,0 +1,6 @@
+SystemID SGB
+16AB	b	u	0	WRAM	My Species
+0DD7	b	u	0	WRAM	Their Species
+0DDF	b	h	0	WRAM	Their DVs
+0DE0	b	h	0	WRAM	Their DVs
+

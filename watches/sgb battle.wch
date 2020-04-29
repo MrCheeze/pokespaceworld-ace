@@ -1,0 +1,8 @@
+SystemID SNES
+0E02	b	h	0	SGB WRAM	Trainer Class
+0E05	b	h	0	SGB WRAM	Trainer within class
+05ED	b	h	0	SGB WRAM	80 for battle
+1637	b	h	0	SGB WRAM	08 for trainer battle
+0DD7	b	h	0	SGB WRAM	Enemy Pkmn
+0DBB	b	h	0	SGB WRAM	Enemy Level
+

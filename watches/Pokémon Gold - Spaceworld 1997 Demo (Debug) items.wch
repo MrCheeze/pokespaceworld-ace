@@ -1,0 +1,14 @@
+SystemID GB
+0D48	b	h	0	WRAM	Menu Select
+119E	b	h	0	WRAM	
+119F	w	h	1	WRAM	
+11A1	w	h	1	WRAM	
+11A3	w	h	1	WRAM	
+11A5	w	h	1	WRAM	
+11A7	w	h	1	WRAM	
+11A9	w	h	1	WRAM	
+0E63	b	h	0	WRAM	Key Items Allowed
+0D4D	w	h	0	WRAM	Last Item Code
+0D49	b	h	0	WRAM	
+16B3	b	h	0	WRAM	Pkmn 1 Item
+

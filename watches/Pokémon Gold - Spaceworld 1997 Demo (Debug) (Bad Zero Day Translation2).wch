@@ -1,0 +1,23 @@
+SystemID GB
+16AA	b	h	0	WRAM	Party Size
+16AB	b	h	0	WRAM	Party Species 1
+16B2	b	h	0	WRAM	Pkmn 1 Species
+16B3	b	h	0	WRAM	Pkmn 1 Item
+16B4	d	h	1	WRAM	Pkmn 1 Moves
+16C9	d	h	1	WRAM	Pkmn 1 PP
+119E	b	h	0	WRAM	Item Count
+0D48	b	h	0	WRAM	Selected Item
+119F	b	h	0	WRAM	Item 1
+11A1	b	h	0	WRAM	Item 2
+05E8	b	h	0	WRAM	wMapScriptNumber
+05E9	b	h	0	WRAM	wMapScriptNumberLocation
+05EA	b	h	0	WRAM	wMapScriptNumberLocation
+05EB	b	h	0	WRAM	wUnknownMapPointer
+05EC	b	h	0	WRAM	wUnknownMapPointer
+0BF5	b	h	0	WRAM	Field Move
+0B90	d	h	1	WRAM	Adjacent Tiles
+0A04	d	h	1	WRAM	Battle Moves
+0A0A	d	h	1	WRAM	Battle PP
+0DDA	b	h	0	WRAM	Enemy Item
+05E8	b	h	0	WRAM	Map Script
+
